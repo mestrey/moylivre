@@ -24,4 +24,14 @@ class AuthController extends Controller
             'email' => 'Предоставленные данные не соответствуют нашим записям.',
         ]);
     }
+
+    public function logout(): RedirectResponse
+    {
+        auth()->logout();
+
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        return redirect()->route('home');
+    }
 }
