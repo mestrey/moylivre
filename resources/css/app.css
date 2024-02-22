@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    font-family: "TT Livret Text Trial", sans-serif;
+}
+
+.container {
+    @media (min-width: theme("screens.2xs")) and (max-width: calc(theme("screens.xs") - 1px)) {
+        padding-left: theme("container.padding.2xs");
+        padding-right: theme("container.padding.2xs");
+    }
+
+    @media (min-width: theme("screens.xs")) and (max-width: calc(theme("screens.sm") - 1px)) {
+        padding-left: theme("container.padding.xs");
+        padding-right: theme("container.padding.xs");
+    }
+}
