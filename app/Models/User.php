@@ -18,6 +18,8 @@ class User extends Authenticatable
         'last',
         'first',
         'email',
+        'latitude',
+        'longitude',
         'password',
     ];
 
