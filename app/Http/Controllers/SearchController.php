@@ -24,27 +24,27 @@ class SearchController extends Controller
             return view('partials.search.empty');
         }
 
-        $books = Book::has('genres')
-            ->whereHas('collections', function ($q) {
-                $q->where('public', true);
-            })
-            ->where('title', 'like', '%' . $request->get('search') . '%')
+        $user = auth()->user();
+
+        $books = Book::where('title', 'like', '%' . $request->get('search') . '%')
+            ->whereHas('collections', fn ($q) => $q->where('public', true))
+            ->with('genres')
             ->join('users as user', 'books.user_id', '=', 'user.id')
-            ->where('user.id', '!=', auth()->user()->id)
+            ->where('user.id', '!=', $user->id)
             ->limit(50)
             ->get();
 
-        $books = $books->sort(function ($a, $b) {
+        $books = $books->sort(function ($a, $b) use ($user) {
             return $this->coordsHelper->getDistanceInMeters(
-                $a->user->latitude,
-                $a->user->longitude,
-                auth()->user()->latitude,
-                auth()->user()->longitude
+                $a->latitude,
+                $a->longitude,
+                $user->latitude,
+                $user->longitude
             ) - $this->coordsHelper->getDistanceInMeters(
-                $b->user->latitude,
-                $b->user->longitude,
-                auth()->user()->latitude,
-                auth()->user()->longitude
+                $b->latitude,
+                $b->longitude,
+                $user->latitude,
+                $user->longitude
             );
         });
 

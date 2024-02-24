@@ -32,7 +32,7 @@
                     <div class="flex justify-between flex-col 2xs:flex-row">
                         <div>Цена: <span class="font-bold">{{ $book->price === null || $book->price === 0 ? 'Бесплатно' : $book->price }}</span></div>
                         @inject('coords', 'App\Helpers\CoordsHelper')
-                        <div class="font-bold">{{ $coords->getDisplayDistanceFromAuthUser($book->user->latitude, $book->user->longitude) }}</div>
+                        <div class="font-bold">{{ $coords->getDisplayDistanceFromAuthUser($book->latitude, $book->longitude) }}</div>
                     </div>
                 </div>
             </div>
