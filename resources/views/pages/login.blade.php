@@ -11,11 +11,11 @@
     <div class="flex flex-col sm:flex-row gap-x-6 gap-y-4">
         <div class="flex sm:flex-row flex-col gap-2">
             <div>Почта:</div>
-            <input class="border-dotted border-b-2 border-black bg-transparent" type="email" name="email" value="{{ old('email') }}">
+            <input placeholder="ivan@ya.ru" class="border-dotted border-b-2 border-black bg-transparent" type="email" name="email" value="{{ old('email') }}">
         </div>
         <div class="flex sm:flex-row flex-col gap-2">
             <div>Пароль:</div>
-            <input class="border-dotted border-b-2 border-black bg-transparent" type="password" name="password">
+            <input placeholder="***" class="border-dotted border-b-2 border-black bg-transparent" type="password" name="password">
         </div>
     </div>
     @error('email')

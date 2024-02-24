@@ -2,22 +2,18 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Collection>
- */
 class CollectionFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->word(),
+            'description' => fake()->boolean() ? fake()->sentence() : null,
+            'user_id' => fake()->boolean() ? User::USER_1_ID : User::USER_2_ID,
+            'public' => fake()->boolean(),
         ];
     }
 }

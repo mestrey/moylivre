@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'guest'], function () {
@@ -15,6 +16,9 @@ Route::group(['middleware' => 'guest'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', fn () => view('pages.profile'))->name('profile');
+
+    Route::get('/search', fn () => view('pages.search'))->name('search');
+    Route::post('/search', [SearchController::class, 'search'])->name('search.post');
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });

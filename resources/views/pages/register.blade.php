@@ -5,17 +5,6 @@
 'footer' => 'Преимущества регистрации включают доступ к персонализированным настройкам, сохранению предпочтений, участию в сообществе и возможности взаимодействия с контентом на более глубоком уровне. Однако важно быть внимательным к безопасности своих учетных данных, выбирая надежные пароли и следя за конфиденциальностью личной информации.',
 ])
 
-<!--             $table->string('last');
-            $table->string('first');
-
-            $table->double('latitude')->nullable();
-            $table->double('longitude')->nullable();
-
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken(); -->
-
 @section('form')
 <form id="register" action="{{ route('register.post') }}" method="post" class="py-6">
     @csrf
@@ -25,23 +14,23 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
         <div class="flex sm:flex-row flex-col gap-2">
             <div>Имя:</div>
-            <input class="w-full border-dotted border-b-2 border-black bg-transparent" type="text" name="first" value="{{ old('first') }}">
+            <input placeholder="Иван" class="w-full border-dotted border-b-2 border-black bg-transparent" type="text" name="first" value="{{ old('first') }}">
         </div>
         <div class="flex sm:flex-row flex-col gap-2">
             <div>Фамилия:</div>
-            <input class="w-full border-dotted border-b-2 border-black bg-transparent" type="text" name="last" value="{{ old('last') }}">
+            <input placeholder="Иванов" class="w-full border-dotted border-b-2 border-black bg-transparent" type="text" name="last" value="{{ old('last') }}">
         </div>
         <div class="flex sm:flex-row flex-col gap-2">
             <div>Почта:</div>
-            <input class="w-full border-dotted border-b-2 border-black bg-transparent" type="email" name="email" value="{{ old('email') }}">
+            <input placeholder="ivan@ya.ru" class="w-full border-dotted border-b-2 border-black bg-transparent" type="email" name="email" value="{{ old('email') }}">
         </div>
         <div class="flex sm:flex-row flex-col gap-2">
             <div>Пароль:</div>
-            <input class="w-full border-dotted border-b-2 border-black bg-transparent" type="password" name="password">
+            <input placeholder="***" class="w-full border-dotted border-b-2 border-black bg-transparent" type="password" name="password">
         </div>
         <div class="flex sm:flex-row flex-col gap-2">
             <div>Подтверждение:</div>
-            <input class="w-full border-dotted border-b-2 border-black bg-transparent" type="password" name="password_confirm">
+            <input placeholder="***" class="w-full border-dotted border-b-2 border-black bg-transparent" type="password" name="password_confirm">
         </div>
     </div>
     @if($errors->any())

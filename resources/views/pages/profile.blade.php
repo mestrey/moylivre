@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
-    hey
+    <div>
+        <span class="italic">МойЛивр:</span>
+        <span>Здравствуйте, <span>{{ auth()->user()->last }}</span> {{ auth()->user()->first }}</span>
+    </div>
 </div>
 @endsection
